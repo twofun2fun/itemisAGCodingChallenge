@@ -63,24 +63,24 @@ const romanic = function (array) {
 
 // Algorithm
 const howMuch = function (string) {
-  howMuchArray = string.split(" ");
-  if (howMuchArray.includes("Silver")) {
-    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+  howMuchArray = string.toLowerCase().split(" "); // lower user input error margin
+  if (howMuchArray.includes("silver")) {
+    let filtered = howMuchArray.filter(filterArray); // reduce array to galaxy currency
     filtered = currencyArray(filtered);
     const finalResult = romanic(filtered);
     return finalResult * silver;
-  } else if (howMuchArray.includes("Gold")) {
-    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+  } else if (howMuchArray.includes("gold")) {
+    let filtered = howMuchArray.filter(filterArray); // reduce array to galaxy currency
     filtered = currencyArray(filtered);
     const finalResult = romanic(filtered);
     return finalResult * gold;
-  } else if (howMuchArray.includes("Iron")) {
-    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+  } else if (howMuchArray.includes("iron")) {
+    let filtered = howMuchArray.filter(filterArray); // reduce array to galaxy currency
     filtered = currencyArray(filtered);
     const finalResult = romanic(filtered);
     return finalResult * iron;
   } else {
-    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+    let filtered = howMuchArray.filter(filterArray); // reduce array to galaxy currency
     filtered = currencyArray(filtered);
     const finalResult = romanic(filtered);
     if (finalResult === 0) {
