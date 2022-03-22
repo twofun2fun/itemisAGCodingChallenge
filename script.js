@@ -24,45 +24,79 @@ const filterArray = function (string) {
   }
 };
 
-// Algorithm
-const howMuch = function (string) {
-  let resultRomanic = 0;
-  howMuchArray = string.split(" ");
-  if (howMuchArray.includes("Silver")) {
-    const howMuchSilver = howMuchArray;
-  } else if (howMuchArray.includes("Gold")) {
-    const howMuchGold = howMuchArray;
-  } else if (howMuchArray.includes("Iron")) {
-    const howMuchIron = howMuchArray;
-  }
-  let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
-  // give strings the numbers of galaxy currency
-  for (let i = 0; i < filtered.length; i++) {
-    switch (filtered[i]) {
+// give strings the numbers of galaxy currency
+const currencyArray = function (array) {
+  for (let i = 0; i < array.length; i++) {
+    switch (array[i]) {
       case "glob":
-        filtered[i] = glob;
+        array[i] = glob;
         break;
       case "prok":
-        filtered[i] = prok;
+        array[i] = prok;
         break;
       case "pish":
-        filtered[i] = pish;
+        array[i] = pish;
         break;
       case "tegj":
-        filtered[i] = tegj;
+        array[i] = tegj;
         break;
     }
   }
-  // romanic principle loop
-  for (let i = 0; i < filtered.length; i++) {
-    if (filtered[i] >= filtered[i + 1]) {
-      resultRomanic += filtered[i];
-    } else if (filtered[i + 1] > filtered[i]) {
-      resultRomanic = resultRomanic + (filtered[i + 1] - filtered[i]);
-      i++; // to skip adding filtered[i] multiple times
-    } else if (filtered[i] >= filtered[filtered.length - 1]) {
-      resultRomanic += filtered[i];
+  return array;
+};
+
+// romanic principle
+const romanic = function (array) {
+  let resultRomanic = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] >= array[i + 1]) {
+      resultRomanic += array[i];
+    } else if (array[i + 1] > array[i]) {
+      resultRomanic = resultRomanic + (array[i + 1] - array[i]);
+      i++; // to skip adding array[i] multiple times
+    } else if (array[i] >= array[array.length - 1]) {
+      resultRomanic += array[i];
     }
   }
   return resultRomanic;
 };
+
+// Algorithm
+const howMuch = function (string) {
+  howMuchArray = string.split(" ");
+  if (howMuchArray.includes("Silver")) {
+    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+    filtered = currencyArray(filtered);
+    const finalResult = romanic(filtered);
+    return finalResult * silver;
+  } else if (howMuchArray.includes("Gold")) {
+    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+    filtered = currencyArray(filtered);
+    const finalResult = romanic(filtered);
+    return finalResult * gold;
+  } else if (howMuchArray.includes("Iron")) {
+    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+    filtered = currencyArray(filtered);
+    const finalResult = romanic(filtered);
+    return finalResult * iron;
+  } else {
+    let filtered = howMuchArray.filter(filterArray); //reduce array to galaxy currency
+    filtered = currencyArray(filtered);
+    const finalResult = romanic(filtered);
+    if (finalResult === 0) {
+      return "I have no idea what you are talking about";
+    } else {
+      return finalResult;
+    }
+  }
+};
+
+console.log(howMuch("how much is pish tegj glob glob ?"));
+console.log(howMuch("how many Credits is glob prok Silver ?"));
+console.log(howMuch("how many Credits is glob prok Gold ?"));
+console.log(howMuch("how many Credits is glob prok Iron ?"));
+console.log(
+  howMuch(
+    "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"
+  )
+);
