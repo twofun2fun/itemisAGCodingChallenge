@@ -30,11 +30,11 @@ My first approach was to pseudocode the problem. This helps me to get an overvie
 smaller problems. Once I got the grasp of the problem I move on to translate it into a program.
 
 While doing that I faced some problems translating the pseudocode. At this stage I decided to take a step back
-and switch my focus from programming to understand the problem more. As soon as I managed to divide the problem into even more smaller pieces
+and switch my focus from programming to understand the problem more. As soon as I managed to divide the problem into even more smaller pieces,
 I went back to programming.
 
-In the programming stage I focused to get the first test output working. Immediately after that I tackled the next problems.
-When I was done with the rough programming I analyzed my code an went to refactor it using the DRY principle. This makes a possible to change my code without
+In the programming stage I focused on getting first test output working. Immediately after that I tackled the next problems.
+When I was done with the rough programming I analyzed my code an went to refactor it using the DRY principle. This makes it possible to change my code without
 changing it for each condition.
 
-Thanks for your attention!
+I am looking forward to answering any further questions in an interview!
